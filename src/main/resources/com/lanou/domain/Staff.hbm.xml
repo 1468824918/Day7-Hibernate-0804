@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou.domain">
+    <class name="Staff" table="T_STAFF">
+        <id name="id" column="STAFF_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+
+        <!--设置员工(Staff)与部门(Department)的多对一关系-->
+        <many-to-one name="dept"
+                     column="DEPT_ID"
+                     class="Department"
+                     not-null="true"
+                     cascade="save-update"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou.domain">
+    <class name="IDCard" table="T_IDCard">
+        <id name="id" column="IDCard_ID">
+            <generator class="native"/>
+        </id>
+        <property name="number"/>
+        <!--新增 one-to-one 标签-->
+        <one-to-one name="person"
+                    class="Person"
+                    property-ref="idCard"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou.domain">
+    <class name="Department" table="T_DEPT">
+        <id name="id" column="DEPT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+
+        <set name="staffs" table="T_STAFF" cascade="save-update" inverse="true">
+            <key column="DEPT_ID"/>
+            <!--配置一对多的关系
+                name:属性标记的实体类中的集合
+                table:指定集合元素对应的表
+            -->
+            <one-to-many class="Staff"/>
+
+        </set>
+    </class>
+</hibernate-mapping>

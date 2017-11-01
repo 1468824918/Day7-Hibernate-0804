@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou.domain">
+    <class name="Person" table="T_PERSON">
+        <id name="id" column="PERSON_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <property name="username"/>
+
+
+        <!--
+            name:Person类中card的引用
+            class:指定IDCard的类
+            unique:唯一
+            column:新增的列明,用来绑定IDCard表中的数据
+                    外键约束的列
+            cascade:级联
+        -->
+        <many-to-one name="idCard"
+                     class="IDCard"
+                     unique="true"
+                     column="IDCard_ID"
+                     cascade="all"/>
+    </class>
+</hibernate-mapping>
